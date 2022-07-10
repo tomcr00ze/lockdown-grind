@@ -16,3 +16,23 @@ var sortedSquares = function (nums) {
     return a - b;
   });
 };
+
+//optimal approach
+//make use of the fact that the array is sorted in ascending order
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortedSquares = function (nums) {
+  let l = 0;
+  let r = nums.length - 1;
+  while (l < r) {
+    if (nums[l] * nums[l] < nums[r] * nums[r]) {
+      nums[r] = nums[r] * nums[r];
+      nums[r--];
+    } else {
+      nums[l] = nums[l] * nums[l];
+      l--;
+    }
+  }
+};
