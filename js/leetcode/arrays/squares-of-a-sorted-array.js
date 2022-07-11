@@ -23,16 +23,24 @@ var sortedSquares = function (nums) {
  * @param {number[]} nums
  * @return {number[]}
  */
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
 var sortedSquares = function (nums) {
+  const newArray = new Array(nums.length).fill(0);
   let l = 0;
   let r = nums.length - 1;
-  while (l < r) {
-    if (nums[l] * nums[l] < nums[r] * nums[r]) {
-      nums[r] = nums[r] * nums[r];
-      nums[r--];
+  for (let i = nums.length - 1; i >= 0; i--) {
+    const l_squared = nums[l] ** 2;
+    const r_squared = nums[r] ** 2;
+    if (l_squared > r_squared) {
+      newArray[i] = l_squared;
+      l++;
     } else {
-      nums[l] = nums[l] * nums[l];
-      l--;
+      newArray[i] = r_squared;
+      r--;
     }
   }
+  return newArray;
 };
