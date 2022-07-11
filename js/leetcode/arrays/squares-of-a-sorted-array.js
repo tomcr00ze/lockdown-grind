@@ -5,6 +5,7 @@
  */
 
 //brute force approach
+//square everything then sort
 var sortedSquares = function (nums) {
   for (let i = 0; i < nums.length; i++) {
     nums[i] = nums[i] * nums[i];
@@ -18,11 +19,9 @@ var sortedSquares = function (nums) {
 };
 
 //optimal approach
-//make use of the fact that the array is sorted in ascending order
-/**
- * @param {number[]} nums
- * @return {number[]}
- */
+//make use of the fact that the array is sorted in ascending order. in this case the numbers in both end whether it be positive or negative, when squared, would have a higher value than the middle. this makes opposite directional 2 pointer approach optimal
+//we do 2 pointer approach, comparing each pointer to see who's larger, then "sort" them accordingly.
+//by "sort" we mean copy that value to its appropriate order in the new array, thus a for loop where start at the nums.length-1 and decrementing it to 0, suits best to keep the order in place
 /**
  * @param {number[]} nums
  * @return {number[]}
